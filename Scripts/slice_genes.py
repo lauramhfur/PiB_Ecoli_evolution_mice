@@ -10,7 +10,7 @@ def slice(ref_genome, mutations_df, outpath_ref, outpath_wt, ref_name):
             end = gene_df['gene_end'].iloc[0]
             gene_seq = ref_genome[start-1:end]
 
-            write_fasta(f"{gene}", ''.join(gene_seq), f"{outpath_ref}/{ref_name}_{gene}.fasta")  # Reference gene
+            write_fasta(f"{gene}", ''.join(gene_seq), f"{outpath_ref}/{ref_name}_{gene}.fasta")      # Reference gene
             for _, row in gene_df.iterrows():
                 p, m = row['mutation_position'], row['mutation']
                 i = start
@@ -19,5 +19,5 @@ def slice(ref_genome, mutations_df, outpath_ref, outpath_wt, ref_name):
                         gene_seq[i-start] = m
                         i += 1
                     i += 1
-            write_fasta(f"{gene}_{mouse}", ''.join(gene_seq), f"{outpath_wt}/{mouse}_{gene}.fasta")         # Gene with SNPs
+            write_fasta(f"{gene}_{mouse}", ''.join(gene_seq), f"{outpath_wt}/{mouse}_{gene}.fasta")  # Gene with SNPs
     return
